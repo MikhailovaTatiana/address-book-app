@@ -1,6 +1,7 @@
 package salt.backend.addressbook.service;
 
 import org.springframework.stereotype.Service;
+import salt.backend.addressbook.model.Address;
 import salt.backend.addressbook.model.Person;
 import salt.backend.addressbook.repository.PersonRepository;
 
@@ -20,5 +21,13 @@ public class PersonService {
 
     public Person savePerson(Person person) {
         return PERSON_REPO.save(person);
+    }
+
+    public Person getPersonById(int id) {
+        return PERSON_REPO.getById(id);
+    }
+
+    public void deletePerson(int id) {
+        PERSON_REPO.deleteById(id);
     }
 }

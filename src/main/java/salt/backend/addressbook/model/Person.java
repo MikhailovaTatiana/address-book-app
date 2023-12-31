@@ -1,5 +1,6 @@
 package salt.backend.addressbook.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,7 +14,8 @@ public class Person {
         private String phone;
         @Column(unique = true)
         private String email;
-        @ManyToOne
+        @JsonIgnore
+        @ManyToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "address_id")
         private Address address;
 
@@ -67,4 +69,5 @@ public class Person {
         public void setAddress(Address address) {
                 this.address = address;
         }
+
 }

@@ -21,4 +21,12 @@ public class AddressService {
     public Address saveAddress(Address address) {
         return ADDRESS_REPO.save(address);
     }
+
+    public Address getAddressById(int id) {
+        return ADDRESS_REPO.getById(id);
+    }
+
+    public void deleteAddress(int id) {
+        ADDRESS_REPO.deleteById(id);
+    }
 }
