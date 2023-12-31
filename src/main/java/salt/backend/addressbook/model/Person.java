@@ -7,15 +7,15 @@ import jakarta.persistence.*;
 public class Person {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        int id;
-        String firstName;
-        String lastName;
-        String phone;
+        private int id;
+        private String firstName;
+        private String lastName;
+        private String phone;
         @Column(unique = true)
-        String email;
+        private String email;
         @ManyToOne
         @JoinColumn(name = "address_id")
-        Address address;
+        private Address address;
 
         public Person() {
         }
