@@ -3,15 +3,12 @@ package salt.backend.addressbook.service;
 import org.springframework.stereotype.Service;
 import salt.backend.addressbook.model.Address;
 import salt.backend.addressbook.repository.AddressRepository;
-
-import java.util.ArrayList;
+;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class AddressService {
     private final AddressRepository ADDRESS_REPO;
-    List<Address> addresses = new ArrayList<>();
 
     public AddressService(AddressRepository addressRepo) {
         ADDRESS_REPO = addressRepo;
@@ -42,5 +39,9 @@ public class AddressService {
         addressIn.setCountry(address.getCountry());
         addressIn.setZipCode(address.getZipCode());
         saveAddress(addressIn);
+    }
+
+    public List<Address> getAddressByStreet(String street) {
+        return ADDRESS_REPO.findAllByStreet(street);
     }
 }

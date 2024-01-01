@@ -33,7 +33,7 @@ public class AddressController {
     }
 
     @GetMapping("/getAddress/{id}")
-    public Address getAddress(@PathVariable int id) throws AddressNotFoundException {
+    public Address getAddressById(@PathVariable int id) throws AddressNotFoundException {
         return addressService.getAddressById(id);
     }
 
@@ -46,6 +46,11 @@ public class AddressController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/updateAddress/{id}")
     public void updateAddress(@RequestBody Address address, @PathVariable int id) {
-        addressService.updateAddress(address,id);
+        addressService.updateAddress(address, id);
+    }
+
+    @GetMapping("/getAddressByStreet/{street}")
+    public List<Address> getAddressByStreetName(@PathVariable String street) {
+        return addressService.getAddressByStreet(street);
     }
 }
