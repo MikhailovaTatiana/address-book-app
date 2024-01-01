@@ -12,5 +12,5 @@ public interface AddressRepository extends JpaRepository<Address, Integer> {
 
 //    @Query("SELECT a FROM Address a WHERE a.streetName = ?1")
     @Query("SELECT a FROM Address a WHERE CONCAT(a.streetName, ' ', a.streetNumber) LIKE %?1%")
-    List<Address> findAllByStreet(String streetName);
+    List<Address> findAllAddressesByStreet(String streetName);
 }

@@ -41,7 +41,7 @@ public class AddressService {
         saveAddress(addressIn);
     }
 
-    public List<Address> getAddressByStreet(String street) {
-        return ADDRESS_REPO.findAllByStreet(street);
+    public List<Address> getAddressByStreetNameAndStreetNumber(String street) {
+        return ADDRESS_REPO.findAllAddressesByStreet(street);
     }
 }

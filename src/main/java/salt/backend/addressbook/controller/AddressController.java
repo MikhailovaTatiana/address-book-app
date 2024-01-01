@@ -50,7 +50,7 @@ public class AddressController {
     }
 
     @GetMapping("/getAddressByStreet/{street}")
-    public List<Address> getAddressByStreetName(@PathVariable String street) {
-        return addressService.getAddressByStreet(street);
+    public List<Address> getAddressByStreet(@PathVariable String street) {
+        return addressService.getAddressByStreetNameAndStreetNumber(street);
     }
 }

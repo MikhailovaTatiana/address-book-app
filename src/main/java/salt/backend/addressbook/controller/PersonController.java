@@ -48,4 +48,9 @@ public class PersonController {
     public void updatePerson(@RequestBody Person person, @PathVariable int id) {
         personService.updatePerson(person,id);
     }
+
+    @GetMapping("/getPersonByName/{name}")
+    public List<Person> getPersonByName(@PathVariable String name) {
+        return personService.getPersonByFullName(name);
+    }
 }
