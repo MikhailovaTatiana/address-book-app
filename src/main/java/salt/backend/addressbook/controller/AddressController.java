@@ -8,6 +8,7 @@ import salt.backend.addressbook.exception.AddressNotFoundException;
 import salt.backend.addressbook.model.Address;
 import salt.backend.addressbook.service.AddressService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -41,5 +42,11 @@ public class AddressController {
     @DeleteMapping("/deleteAddress/{id}")
     public void deleteAddress(@PathVariable int id) {
         addressService.deleteAddress(id);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/updateAddress/{id}")
+    public void updateAddress(@RequestBody Address address, @PathVariable int id) {
+        addressService.updateAddress(address,id);
     }
 }

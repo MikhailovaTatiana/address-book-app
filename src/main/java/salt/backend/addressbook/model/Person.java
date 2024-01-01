@@ -1,11 +1,13 @@
 package salt.backend.addressbook.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
+import java.io.Serializable;
 
 @Entity
 @Table(name = "persons")
-public class Person {
+public class Person implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int id;
@@ -14,9 +16,9 @@ public class Person {
         private String phone;
         @Column(unique = true)
         private String email;
-        @JsonIgnore
-        @ManyToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "address_id")
+        @JsonBackReference
+        @ManyToOne(cascade=CascadeType.MERGE, fetch = FetchType.LAZY)
+        @JoinColumn(name="address_id")
         private Address address;
 
         public Person() {

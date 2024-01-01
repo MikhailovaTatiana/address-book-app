@@ -30,4 +30,13 @@ public class PersonService {
     public void deletePerson(int id) {
         PERSON_REPO.deleteById(id);
     }
+
+    public void updatePerson(Person person, int id) {
+        Person personIn = getPersonById(id);
+        personIn.setFirstName(person.getFirstName());
+        personIn.setLastName(person.getLastName());
+        personIn.setPhone(person.getPhone());
+        personIn.setEmail(person.getEmail());
+        savePerson(personIn);
+    }
 }
