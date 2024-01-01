@@ -8,7 +8,6 @@ import salt.backend.addressbook.exception.AddressNotFoundException;
 import salt.backend.addressbook.model.Address;
 import salt.backend.addressbook.service.AddressService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
