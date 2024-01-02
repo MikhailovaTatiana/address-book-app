@@ -11,6 +11,7 @@ import salt.backend.addressbook.service.AddressService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/addresses")
 public class AddressController {
 
