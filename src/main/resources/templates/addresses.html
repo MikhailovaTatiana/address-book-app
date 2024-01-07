@@ -8,25 +8,34 @@
 </head>
 <body>
   <h2>Addresses:</h2>
-    <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Address ID</th>
-            <th>Street Name</th>
-            <th>Street Number</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Country</th>
-            <th>Zip Code</th>
-            <th>Number of Persons</th>
-          </tr>
-        </thead>
-        <tbody id="addresses">
-    
-        </tbody>
-      </table>
-    </div>
-    <script src="functions.js"></script>
+  <form>
+    <input
+         type="text"
+         id="input"
+         onkeyup="addressFunctions.searchByStreetNameAndStreetNumber()"
+         placeholder="Search by street..."
+         />
+    <input type="submit" value="All" />
+  </form>
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Address ID</th>
+          <th>Street Name</th>
+          <th>Street Number</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Country</th>
+          <th>Zip Code</th>
+          <th>Number of Persons</th>
+        </tr>
+      </thead>
+      <tbody id="addresses">
+  
+      </tbody>
+    </table>
+  </div>
+  <script src="functions.js"></script>
 </body>
 </html>

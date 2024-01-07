@@ -8,6 +8,15 @@
 </head>
 <body>
     <h2>Persons:</h2>
+    <form>
+        <input
+             type="text"
+             id="input"
+             onkeyup="personFunctions.searchByFirstNameAndLastName()"
+             placeholder="Search by name..."
+             />
+        <input type="submit" value="All" />
+      </form>
     <div class="container">
       <table class="table">
         <thead>
