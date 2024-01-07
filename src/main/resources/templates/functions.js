@@ -1,41 +1,73 @@
+document.addEventListener("DOMContentLoaded", () => {
+  addressFunctions.addressesInTable();
+  personFunctions.personsInTable();
+});
+
+
 addressFunctions = {
-  getAddresses: function () {
+
+  addressesInTable: function () {
     fetch("http://localhost:8080/addresses", {
-      method: "GET",
-      withCredentials: true,
-      crossorigin: true,
-      mode: "no-cors",
       headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => console.log({ data }))
-      .catch((error) => {
-        console.error();
-      });
-  },
+        "Access-Control-Allow-Origin": "*"
+      }
+    }).then(response => {
+      response.json()
+        .then(data => {
+          console.log(data);
+          if (data.length > 0) {
+            var temp = "";
+            data.forEach((itemData) => {
+              temp += "<tr>";
+              temp += "<td>" + itemData.id + "</td>";
+              temp += "<td>" + itemData.streetName + "</td>";
+              temp += "<td>" + itemData.streetNumber + "</td>";
+              temp += "<td>" + itemData.city + "</td>";
+              temp += "<td>" + itemData.state + "</td>";
+              temp += "<td>" + itemData.country + "</td>";
+              temp += "<td>" + itemData.zipCode + "</td>";
+              temp += "<td>" + itemData.persons.length + "</td>";
+            });
+            document.getElementById('addresses').innerHTML = temp;
+          }
+        }).catch((error) => {
+          console.log(error);
+        })
+      }
+    )
+  }
+
 };
 
+
 personFunctions = {
-  getPersons: function () {
+
+  personsInTable: function () {
     fetch("http://localhost:8080/persons", {
-      method: "GET",
-      withCredentials: true,
-      crossorigin: true,
-      mode: "no-cors",
       headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => console.log({ data }))
-      .catch((error) => {
-        console.error();
-      });
-  },
+        "Access-Control-Allow-Origin": "*"
+      }
+    }).then(response => {
+      response.json()
+        .then(data => {
+          console.log(data);
+          if (data.length > 0) {
+            var temp = "";
+            data.forEach((itemData) => {
+              temp += "<tr>";
+              temp += "<td>" + itemData.id + "</td>";
+              temp += "<td>" + itemData.firstName + "</td>";
+              temp += "<td>" + itemData.lastName + "</td>";
+              temp += "<td>" + itemData.phone + "</td>";
+              temp += "<td>" + itemData.email + "</td>";
+            });
+            document.getElementById('persons').innerHTML = temp;
+          }
+        }).catch((error) => {
+          console.log(error);
+        })
+      }
+    )
+  }
+
 };
